@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/css/userSignInUp.css">
+<div id="content">
+	<h1>模仿</h1>
+	<h2>通过模仿,实现梦想</h2>
+	<div id="switch">
+		<span class="on"><a href="/user/signIn">登入</a></span>
+		<i>·</i>
+		<span><a href="/user/signUp">注册</a></span>
+	</div>
+	<form id="sign-up" method="post" action="/user/signInPost">
+		<input id="contact" type="text" name="user[contact]" placeholder="您的邮件地址或者电话号码" required="required" autofocus="autofocus" pattern="(^1[35678]\d{9,9}$)|(^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$)"><br>
+		<input id="password" type="password" name="user[password]" placeholder="输入密码" required="required" pattern="[a-zA-Z0-9]{1,18}"><br>
+		<button>登入</button>
+		<p>点击 “注册” 或下方社交登录按钮，即表示您同意并愿意遵守简书 用户协议 和 隐私政策 。</p>
+	</form>
+	<script>
+		var $sign_up = $('#sign-up');
+		var $brief = $sign_up.find('.brief');
+		$sign_up.find('#name').on('change', function(){
+			$.ajax({
+				'type' : 'POST',
+				'url' : '/user/findName',
+				'data' : {
+					'name' : $(this).val()
+				},
+				'success' : function(data){
+					if (data.success) {
+						$brief.css('display', 'none');
+					} else {
+						$brief.css('display', 'block');
+					}
+					console.log(data.success);
+				}
+			})
+		});
+	</script>
+	<div id="other-ways">
+		<p>您还可以通过以下方式直接登录</p>
+		<ul>
+			<li><a href="">微博</a></li>
+			<li><a href="">腾讯</a></li>
+			<li><a href="">豆瓣</a></li>
+			<li><a href="">谷歌</a></li>
+			<li><a href="">微信</a></li>
+			<li><a href="">github</a></li>
+		</ul>
+	</div>
+</div>

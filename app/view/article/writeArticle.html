@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="/css/writeArticle.css">
+<div id="content">
+	<div id="new-class">
+		<div class="title">
+			<span id="new-class-btn">+新建分类</span>
+			<div id="new-article-class">
+				<input class="notebook-name" type="text" placeholder="请输入文集名...">
+				<span class="cancel">取消</span>
+				<span class="confirm">确认</span>
+			</div>
+		</div>
+		<ul class="content" data-id="{{articleClassId}}">
+			{{#each class}}
+			<li data-id="{{_id}}">
+				<span>{{className}}</span>
+				<div class="set-nav"></div>
+				<ul class="set-up">
+					<li class="modify-article-class">修改文集名</li>
+					<li class="divider"></li>
+					<li class="delete-article-class">删除文集</li>
+				</ul>
+			</li>
+			{{/each}}
+		</ul>
+		<div id="popup-window">
+			<h3>修改文集名</h3>
+			<input class="text" type="text" placeholder="文集名" autofocus="autofocus">
+			<div class="layout">
+				<span class="cancel">取消</span>
+				<span class="confirm">确认</span>
+			</div>
+		</div>
+	</div>
+	<div id="new-article">
+		<div class="title">
+			<span id="new-article-page" data-id="{{articleClassId}}" data-class-id="{{defaultClassId}}">+新建文章</span>
+		</div>
+		<ul class="content" data-id="{{articleClassId}}" data-class-id="{{defaultClassId}}">
+			{{#article}}
+			<li data-id="{{id}}">
+				<h4>{{title}}</h4>
+				<p class="article-introduction"></p>
+				<div class="number">字数:0</div>
+				<div class="set-nav"></div>
+				<ul class="set-up">
+					<li>直接发布</li>
+					<li class="divider"></li>
+					<li>移动文章</li>
+					<li>历史版本</li>
+					<li class="divider"></li>
+					<li class="delete-article">删除文章</li>
+				</ul>
+			</li>
+			{{/article}}
+		</ul>
+		<div id="new-article-page-2">
+			+在下方新建文章
+		</div>
+	</div>
+	{{#defaultArticle}}
+	<div id="article" data-id="{{id}}">
+		<div class="layout">
+			<input id="class" type="text" name="class" placeholder="当前分类为空" value="">
+			<input id="title" type="text" name="title" value="{{title}}">
+			<div class="toolbar">
+				<ul class="left">
+					<li data-effect="FormatBlock" data-options="div" data-original-title="默认">div</li>
+					<li data-effect="bold" data-original-title="加粗">
+						B
+						<ul>
+							<li data-effect="bold" data-original-title="加粗">b</li>
+							<li data-effect="italic" data-original-title="斜体">i</li>
+							<li data-effect="strikeThrough" data-original-title="删除线">s</li>
+						</ul>
+					</li>
+					<li data-effect="formatBlock" data-options="blockquote" data-original-title="重要引起来">y</li>
+					<li data-effect="h1" data-original-title="标题一">
+						h
+						<ul>
+							<li data-effect="FormatBlock" data-options="h1" data-original-title="标题一">h1</li>
+							<li data-effect="FormatBlock" data-options="h2" data-original-title="标题二">h2</li>
+							<li data-effect="FormatBlock" data-options="h3" data-original-title="标题三">h3</li>
+							<li data-effect="FormatBlock" data-options="h4" data-original-title="标题四">h4</li>
+						</ul>
+					</li>
+					<li data-effect="insertHorizontalRule" data-original-title="分割线">
+						l
+						<ul>
+							<li data-effect="insertHorizontalRule" data-original-title="分割线">-</li>
+							<li data-effect="createLink"  data-open="link-model" data-original-title="插入链接">链接</li>
+							<li data-effect="insertImage"  data-open="pic-model" data-options="/image/index/1.jpg" data-original-title="插入图片">图片</li>
+							<li data-effect="FormatBlock" data-options="video" data-original-title="插入视频">视频</li>
+						</ul>
+					</li>
+					<li data-effect="undo" data-original-title="撤销">c</li>
+				</ul>
+				<ul class="right">
+					<li data-function="save" data-original-title="保存">保存</li>
+					<li data-function="full-screen" data-original-title="全屏">全屏</li>
+					<li data-function="publish" data-original-title="发布" data-publish="{{publish}}">发布</li>
+				</ul>
+			</div>
+			<div id="article-area" contenteditable="true">
+				{{{content}}}
+			</div>
+		</div>
+		<div id="model">
+			<div id="link-model">
+				<h3>插入链接</h3>
+				<input class="model-link" type="text" placeholder="链接地址" value="http://">
+				<input class="model-text" type="text" placeholder="链接文本">
+				<span class="btn-cancel confirm">确认</span>
+				<span class="btn-cancel cancel">取消</span>
+			</div>
+			<div id="pic-model">
+				<h3>插入图片</h3>
+				<div class="layout">
+					<div class="tab-btn">
+						<span data-class="upload-image">本地上传</span>
+						<i>或</i>
+						<span data-class="link-image">网络图片</span>
+					</div>
+					<div class="upload-image clearfix">
+						<label for="upload-image">选择图片上传</label>
+						<input id="upload-image" name="pic" type="file" multiple=true>
+						<span class="btn-cancel cancel">取消</span>
+					</div>
+					<div class="link-image clearfix">
+						<input id="pic-link" type="text" placeholder="图片链接">
+						<span class="btn-cancel confirm">确认</span>
+						<span class="btn-cancel cancel">取消</span>
+					</div>
+					<p>有关图片私密性点击问号了解更多</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/defaultArticle}}
+</div>
+<script src="/js/writeArticle.js"></script>

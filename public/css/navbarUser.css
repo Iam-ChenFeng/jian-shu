@@ -1,0 +1,67 @@
+#navbar-user {
+  float: right;
+}
+#navbar-user .userUl li {
+  float: left;
+  margin-right: 5px;
+  line-height: 36px;
+}
+#navbar-user .userUl li a {
+  color: #555;
+}
+#navbar-user .userUl li:hover a {
+  color: #000;
+}
+#navbar-user .userDiv {
+  position: relative;
+  z-index: 999;
+}
+#navbar-user .userDiv > img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+#navbar-user .userDiv:hover > img {
+  border-color: #e78170;
+}
+#navbar-user .userDiv ul {
+  position: absolute;
+  right: 0px;
+  top: 50px;
+  width: 120px;
+  padding: 10px 0;
+  background: #fff;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 15px #ccc;
+  font-size: 14px;
+  display: none;
+}
+#navbar-user .userDiv ul:before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: -19px;
+  border: 10px solid transparent;
+  border-bottom-color: #ccc;
+}
+#navbar-user .userDiv ul:after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: -15px;
+  border: 8px solid transparent;
+  border-bottom-color: #fff;
+}
+#navbar-user .userDiv ul li a {
+  padding: 0 20px;
+  display: block;
+}
+#navbar-user .userDiv ul li:hover {
+  background: linear-gradient(to bottom, #555, #484848);
+}
+#navbar-user .userDiv ul li:hover a {
+  color: #fff;
+}

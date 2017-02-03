@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="/css/articleDetails.css">
+<header id="header">
+	<div class="left">
+		<div class="collection-menu-btn">
+			<div class="collection-menu">
+				<h3>文章被以下专题收录：</h3>
+				<ul>
+					<li>
+						<div class="follow" title="关注"></div>
+						<a class="head-portrait" href="">
+							<img src="/image/article/0.jpg" alt="">
+						</a>
+						<a class="title" href="">
+							@IT·互联网
+						</a>
+						<div>11510 篇文章・217022 人关注</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="notebooks-menu-btn">
+			<div class="notebooks-menu">
+				<h3>文章所属文集：</h3>
+				<div class="author">
+					<div class="follow" title="关注"></div>
+					<a class="head-portrait" href="">
+						<img src="/image/article/1.png" alt="">
+					</a>
+					<a class="title" href="">
+						@IT·互联网
+					</a>
+					<div>11510 篇文章・217022 人关注</div>
+				</div>
+				<ul>
+					<li><a href="">@IT互联网专题征文活动 | #世界互联网大会#界互联网大会#</a></li>
+					<li><a href="">@IT互联网专题征文活动 | #世界互联网大会#</a></li>
+					<li><a href="">@IT互联网专题征文活动 | #世界互联网大会#</a></li>
+					<li><a href="">@IT互联网专题征文活动 | #世界互联网大会#界互联网大会#</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<ul>
+			<li title="收藏文章">收藏</li>
+			<li title="分享文章">分享</li>
+		</ul>
+		{{> signIn}}
+	</div>
+</header>
+<div id="layout-body">
+	<div id="body" data-article-id="{{article.id}}">
+		<div id="author">
+			<div class="follow" title="关注">添加关注</div>
+			<a class="head-portrait" href="">
+				<img src="/image/article/1.png" alt="">
+			</a>
+			<div class="introduce">
+				<a class="title" href="">
+					<span class="close-up">作者</span>
+					<a class="author-name" href="">{{article.author.name}}</a>
+					{{article.time}}
+				</a>
+				<p>写了000字，被000人关注，获得了000个喜欢</p>
+			</div>
+		</div>
+		<div id="content">
+			<div class="title">{{article.title}}</div>
+			<div class="content">{{{article.content}}}</div>
+		</div>
+		<div id="article-bottom">
+			<div class="fabulous {{#if article.fabulousOnOff}}on{{/if}}">
+				<span>喜欢</span><em>|</em><span><i>{{article.fabulous}}</i></span>
+			</div>
+		</div>
+		<div id="comment">
+			<div class="comment-order">
+				{{article.commentLength}}条评论 （ 
+				<a class="on" href="">按时间正序</a>· 
+				<a href="">按时间倒序</a>· 
+				<a href="">按喜欢排序</a> ）
+			</div>
+			<div class="comment-content-wrap">
+				{{#each article.comment}}
+				<div class="comment-content-list" data-id="{{_id}}">
+					<div class="meta-top">
+						<a class="user-profile" href="">
+							<img src="/image/article/0.jpg" alt="">
+						</a>
+						<div>
+							<a class="author-name" href="{{own._id}}">{{own.name}}</a>
+							<p>{{floor}} 楼 · {{time.createTime}}</p>
+						</div>
+					</div>
+					<p>{{content}}</p>
+					<div class="comment-footer" data-id="{{own._id}}">
+						<span class="fabulous {{#if fabulousOnOff}}on{{/if}}">喜欢(<i>{{fabulous}}</i>)</span>
+						<span class="reply">回复</span>
+					</div>
+					<div class="child-comment-list">
+						<ul>
+							{{#each childComment}}
+							<li class="child-comment">
+								<p>
+									{{floor}}楼
+									<a class="author-name" href="">{{own.name}}</a>：
+									<a class="author-name" href="">{{to.name}}</a>
+									{{content}}
+								</p>
+								<p data-id="{{own._id}}"> {{time.createTime}} <span class="reply">回复</span></p>
+							</li>
+							{{/each}}
+						</ul>
+					</div>
+					<div class="new-article">
+						<textarea class="text" placeholder="写下你的评论…"></textarea>
+						<div>
+							<span class="btn" data-id="{{own._id}}">发表</span>
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="new-article">
+			<textarea class="text" placeholder="写下你的评论…"></textarea>
+			<div>
+				<span class="btn">发表</span>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/js/articleDetails.js"></script>

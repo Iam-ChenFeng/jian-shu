@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/navbarUser.css">
+<div id="navbar-user">
+	{{#if user}}
+	<div class="userDiv">
+		<img src="/image/user/default.jpg" alt="">
+		<ul>
+			<li><a href="">写文章</a></li>
+			<li><a href="">我的主页</a></li>
+			<li><a href="">我喜欢的</a></li>
+			<li><a href="">我的收藏</a></li>
+			<li><a href="">提醒</a></li>
+			<li><a href="">简信</a></li>
+			<li><a href="">设置</a></li>
+			<li><a href="">钱包</a></li>
+			<li><a href="">帮助</a></li>
+			<li><a href="/user/signOut">登出</a></li>
+		</ul>
+	</div>
+	<script>
+		$('#navbar-user img').on('click', function(){
+			$(this).next().toggle();
+		})
+	</script>
+	{{else}}
+	<ul class="userUl">
+		<li>
+			<a href="/user/signIn">登入</a>
+		</li>
+		<li>
+			<a href="/user/signUp">注册</a>
+		</li>
+	</ul>
+	{{/if}}
+</div>

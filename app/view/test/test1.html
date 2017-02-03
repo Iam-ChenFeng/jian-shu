@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div.div1{
+            width:200px;
+            height:200px;
+            background: yellow;
+        }
+        div.div2{
+            width:200px;
+            height:200px;
+            position: absolute;
+            left:-50px;
+            top:-50px;
+            z-index:2;
+        }
+        .a{
+            position: absolute;
+            left:50px;
+            top:50px;
+            z-index: 3;
+            display: block;
+            width:100px;
+            height:100px;
+            background: green;
+            overflow: hidden;
+        }
+        .b{
+            position: absolute;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <iframe class="a" src="/test2" frameborder="0"></iframe>
+    </div>
+    <div class="div2">
+        <iframe class="b" src="/test2" frameborder="0"></iframe>
+    </div>
+</body>
+</html>
